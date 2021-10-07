@@ -1,0 +1,4 @@
+$schema: https://azuremlschemas.azureedge.net/latest/amlCompute.schema.json 
+name: vm-example
+type: virtualmachine
+resource_id: "/subscriptions/6560575d-fa06-4e7d-95fb-f962e74efd7a/resourceGroups/azureml-examples/providers/Microsoft.Compute/virtualMachines/cody-test" 
