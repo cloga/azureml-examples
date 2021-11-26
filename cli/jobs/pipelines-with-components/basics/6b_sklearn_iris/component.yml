@@ -1,0 +1,24 @@
+# <component>
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: TrainRandoforestModel-iris
+display_name: TrainRandoforestModel-iris
+version: 1
+type: command
+inputs:
+  data: 
+    type: path
+  n_estimators:
+    type: integer
+    default: 3
+  max_depth:
+    type: integer
+    default: 3
+code:
+  local_path: ./src
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu:5
+command: >-
+  python train.py 
+  --data ${{inputs.data}}
+  --n_estimators ${{inputs.n_estimators}}
+  --max_depth ${{inputs.max_depth}}  
+# </component>

@@ -1,0 +1,19 @@
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+type: pipeline
+description: "Example of using data from a Dataset as pipeline input with rw_mount"
+inputs:
+  data:
+    dataset: azureml:sample-data-iris:1
+    mode: rw_mount
+  n_estimators: 3
+  max_depth: 3
+  
+jobs:
+  train:
+    type: component
+    component: azureml:TrainRandoforestModel-iris:1
+    compute: azureml:cpu-cluster
+    inputs:
+      data: ${{inputs.data}}
+      n_estimators: ${{inputs.n_estimators}}
+      max_depth: ${{inputs.max_depth}}
