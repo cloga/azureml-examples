@@ -15,16 +15,17 @@ parser = argparse.ArgumentParser("train")
 parser.add_argument("--data", type=str, help="Path to data")
 parser.add_argument("--n_estimators", type=int, default=3, help="The number of trees in the forest.")
 parser.add_argument("--max_depth", type=int, default=3, help="The maximum depth of the tree.")
+parser.add_argument("--model_path", type=str, default=3, help="Path to model")
 args = parser.parse_args()
 
 print("hello training world...")
 
 
-print("mounted_path files: ")
+print("mounted_path files: ", args.data)
 
 arr = os.listdir(args.data)
 print(arr)
-train_data = pd.read_csv((Path(args.data) / 'iris.csv'))
+train_data = pd.read_csv((Path(args.data) / 'Iris.csv'))
 print(train_data.columns)
 
 # Split the data into input(X) and output(y)
@@ -59,5 +60,5 @@ mean_squared_error(testy, test_pred)
 # run.log(mean_squared_error)
 
 # Output the model
-pickle.dump(model, open((Path(args.data) / "model.sav"), "wb"))
+pickle.dump(model, open((Path(args.model_path) / "model.sav"), "wb"))
 

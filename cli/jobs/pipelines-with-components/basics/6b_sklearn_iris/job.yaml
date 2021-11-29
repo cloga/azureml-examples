@@ -1,0 +1,25 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+# name: TrainRandoforestModel-iris
+display_name: TrainRandoforestModel-iris
+# version: 0.1.0
+type: command
+inputs:
+  data:
+    dataset:
+      local_path: ./data 
+  n_estimators: 3
+  max_depth: 3
+
+outputs:
+  model_path:
+    mode: upload
+compute: azureml:cpu-cluster
+code:
+  local_path: ./src
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu:5
+command: >-
+  python train.py 
+  --data ${{inputs.data}}
+  --n_estimators ${{inputs.n_estimators}}
+  --max_depth ${{inputs.max_depth}}
+  --model_path ${{outputs.model_path}}
