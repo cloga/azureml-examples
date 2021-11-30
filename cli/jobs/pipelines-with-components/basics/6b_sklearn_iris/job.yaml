@@ -9,10 +9,11 @@ inputs:
       local_path: ./data 
   n_estimators: 3
   max_depth: 3
-
-outputs:
   model_path:
-    mode: upload
+    # you need ensure the folder existed in datastore.
+    folder: azureml://datastores/workspaceblobstore/paths/
+    mode: rw_mount  
+
 compute: azureml:cpu-cluster
 code:
   local_path: ./src
@@ -22,4 +23,4 @@ command: >-
   --data ${{inputs.data}}
   --n_estimators ${{inputs.n_estimators}}
   --max_depth ${{inputs.max_depth}}
-  --model_path ${{outputs.model_path}}
+  --model_path ${{inputs.model_path}}

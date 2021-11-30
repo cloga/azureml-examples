@@ -8,7 +8,8 @@ inputs:
   n_estimators: 3
   max_depth: 3
   model_path:
-    folder: azureml://datastores/workspaceblobstore/paths/model-iris
+    # you need ensure the folder existed in datastore.
+    folder: azureml://datastores/workspaceblobstore/paths/
     mode: rw_mount
   
 jobs:
