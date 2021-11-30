@@ -12,5 +12,5 @@ jobs:
       image: python
     compute: azureml:cpu-cluster
     environment_variables:
-      AZUREML_COMPUTE_USE_COMMON_RUNTIME : "false"
- 
+      AZUREML_COMPUTE_USE_COMMON_RUNTIME : "false" 
+      abc: def
