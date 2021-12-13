@@ -7,12 +7,14 @@ print("Hello Python World")
 parser = argparse.ArgumentParser()
 parser.add_argument("--input_data", type=str)
 parser.add_argument("--input_string", type=str)
+parser.add_argument("--input_optional", type=str)
 parser.add_argument("--output_data", type=str)
 
 args = parser.parse_args()
 
 print("sample_input_string: %s" % args.input_string)
 print("sample_input_data path: %s" % args.input_data)
+print("input_optional path: %s" % args.input_optional)
 print("sample_output_data path: %s" % args.output_data)
 
 print("files in input_data path: ")

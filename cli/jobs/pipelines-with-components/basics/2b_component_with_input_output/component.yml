@@ -11,6 +11,10 @@ inputs:
   sample_input_string:
     type: string
     default: "hello_python_world_default"
+# create a optional port in component.  
+  input_optional:
+    type: path
+    optional: true
 outputs:
   sample_output_data:
     type: path
@@ -21,8 +25,11 @@ code:
 environment: 
   image: python
 
+# to use optional inputs in command please use [--input_optional ${{inputs.input_optional}}].
+
 command: >-
   python hello.py  
   --input_data ${{inputs.sample_input_data}}
   --input_string ${{inputs.sample_input_string}}
+  [--input_optional ${{inputs.input_optional}}]
   --output_data ${{outputs.sample_output_data}}
