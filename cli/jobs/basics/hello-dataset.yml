@@ -1,0 +1,13 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+command: >-
+  ls ${{inputs.sample_input_data}}
+code:
+  local_path: src
+inputs:
+  sample_input_data:
+    dataset: azureml:local-file-example:1
+    mode: ro_mount
+environment:
+  image: python:latest
+compute: azureml:cpu-cluster
+    

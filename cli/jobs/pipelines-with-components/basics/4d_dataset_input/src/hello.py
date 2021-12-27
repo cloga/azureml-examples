@@ -15,14 +15,24 @@ print("sample_input_string: %s" % args.input_string)
 print("sample_input_data path: %s" % args.input_data)
 print("sample_output_data path: %s" % args.output_data)
 
+print("current folder path: ")
+cwd = os.getcwd()
+print(cwd)
+
+print("change folder!")
+os.chdir(args.input_data)
+
+print("current folder path: ")
+cwd = os.getcwd()
+print(cwd)
+
 print("files in input_data path: ")
 arr = os.listdir(args.input_data)
 print(arr)
-
-for filename in arr:
-    print("reading file: %s ..." % filename)
-    with open(os.path.join(args.input_data, filename), "r") as handle:
-        print(handle.read())
+filename = 'sample.csv'
+print("reading file: %s ..." % filename)
+with open(os.path.join(args.input_data, filename), "r") as handle:
+    print(handle.read())
 
 cur_time_str = datetime.now().strftime("%b-%d-%Y-%H-%M-%S")
 
@@ -33,3 +43,8 @@ with open(
     os.path.join(args.output_data, "file-" + cur_time_str + ".txt"), "wt"
 ) as text_file:
     print(f"Logging date time: {cur_time_str}", file=text_file)
+
+
+print("files in output_data path: ")
+arr = os.listdir(args.output_data)
+print(arr)
